@@ -144,6 +144,47 @@ std::string qual_metade_eh_mais_estressada(std::vector<int> fila){
 
 }
 
+// FILTER
+// clonar: retorna um novo vetor copiando os valores do vetor de entrada
+std::vector<int> clonar(const std::vector<int>& v){
+    std::vector<int> novo_vetor;
+    for(int elem : v){
+        novo_vetor.push_back(elem);
+    }
+    return novo_vetor;
+}
+
+// pegar_homens: retorne uma lista com os homens (valores positivos)
+std::vector<int> pegar_homens(const std::vector<int>& v){
+    std::vector<int> homens;
+    for(int elem: v){
+        if(elem > 0)
+            homens.push_back(elem);
+    }
+    return homens;
+}
+
+// pegar_calmos: retorne uma lista com as pessoas com stress menor que 10 (abs)
+std::vector<int> pegar_calmos(const std::vector<int>& v){
+    std::vector<int> calmos;
+    for(int elem : v)
+        if(elem < 10 && elem > -10)
+            calmos.push_back(elem);
+    return calmos;        
+}
+// pegar_mulheres_calmas: retorne uma lista com as mulheres com nível de stress menor que 10.(negativos menor que 10)
+std::vector<int> pegar_mulheres_calmas(const std::vector<int>& v){
+    std::vector<int> mulheres_calmas;
+    for(int elem : v)
+        if(elem < 0 && elem > -10)
+            mulheres_calmas.push_back(elem);
+    return mulheres_calmas;
+}
+
+void imprimir_vector(std::vector<int> v){
+    for(int& elem: v)
+        std::cout << elem << " ";
+}
 
 
 int main(){
@@ -186,6 +227,15 @@ int main(){
     // std::cout << qual_metade_eh_mais_estressada({50, 98, 2, -50, -1, -99})<< "\n"; // "empate"
     // std::cout << qual_metade_eh_mais_estressada({51, 99, 1, -50, -1, -99})<< "\n"; // "primeira"
 
+    // FILTER
 
+    // std::vector<int> v {-1,1,-50,30,-2,4,5};
+
+    // imprimir_vector(clonar(v));
+    // imprimir_vector(pegar_homens(v));
+    // imprimir_vector(pegar_calmos(v));
+    // imprimir_vector(pegar_mulheres_calmas(v));
+
+    
 
 }
