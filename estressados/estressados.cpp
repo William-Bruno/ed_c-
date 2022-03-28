@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cstdio>
+#include <iterator>
+#include <algorithm>
+#include <time.h>
+#include <stdlib.h>
 
 
 bool existe(std::vector<int> fila, int x){
@@ -153,7 +156,6 @@ std::vector<int> clonar(const std::vector<int>& v){
     }
     return novo_vetor;
 }
-
 // pegar_homens: retorne uma lista com os homens (valores positivos)
 std::vector<int> pegar_homens(const std::vector<int>& v){
     std::vector<int> homens;
@@ -163,7 +165,6 @@ std::vector<int> pegar_homens(const std::vector<int>& v){
     }
     return homens;
 }
-
 // pegar_calmos: retorne uma lista com as pessoas com stress menor que 10 (abs)
 std::vector<int> pegar_calmos(const std::vector<int>& v){
     std::vector<int> calmos;
@@ -181,11 +182,55 @@ std::vector<int> pegar_mulheres_calmas(const std::vector<int>& v){
     return mulheres_calmas;
 }
 
+//ACESSO
+//retorna um novo vetor com os dados invertidos
+std::vector<int> inverter_com_copia(const std::vector<int>& v){
+    std::vector<int> vetor_invertido;
+    for(int elem: v)
+        vetor_invertido.push_back(elem);
+    std::reverse(vetor_invertido.begin(), vetor_invertido.end());
+    return vetor_invertido;
+}
+
+//inverte os valores do vetor de entrada sem uso de vetor auxiliar
+void inverter_inplace(std::vector<int>& v){
+    std::reverse(v.begin(), v.end());
+}
+
 void imprimir_vector(std::vector<int> v){
     for(int& elem: v)
         std::cout << elem << " ";
 }
 
+//retorna aleatoriamente um elemento do vetor
+int sortear(const std::vector<int>& v){
+    srand(time(NULL));
+    int indice = rand() % v.size();
+    int aleatorio {};
+    for(int i = 0; i < (int) v.size(); i++){
+        if(indice == i)
+            aleatorio = v[i];
+    }
+    return aleatorio;
+}
+
+//ordena o vetor original
+void ordenar(std::vector<int>& v){
+    int escolhido {}, menor {}, pos {};
+    for(int i = 0; i < (int) v.size(); i++){
+        escolhido = v[i];
+        menor = v[i+1];
+        pos = i+1;
+        for(int j = i+1; j <= (int) v.size(); j++){
+            if(v[j] < menor)
+                menor = v[j];
+                pos = j;
+        }
+        if(menor < escolhido)
+            v[i] = v[pos];
+            v[pos] = escolhido;
+    }
+}
 
 int main(){
     /*
@@ -229,12 +274,18 @@ int main(){
 
     // FILTER
 
-    // std::vector<int> v {-1,1,-50,30,-2,4,5};
+    std::vector<int> v {5, 10, 6, 8};
 
     // imprimir_vector(clonar(v));
     // imprimir_vector(pegar_homens(v));
     // imprimir_vector(pegar_calmos(v));
     // imprimir_vector(pegar_mulheres_calmas(v));
+
+    // std::cout << sortear(v) << "\n";
+
+    ordenar(v);
+    imprimir_vector(v);
+    
 
     
 
