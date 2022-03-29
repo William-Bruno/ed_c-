@@ -197,11 +197,6 @@ void inverter_inplace(std::vector<int>& v){
     std::reverse(v.begin(), v.end());
 }
 
-void imprimir_vector(std::vector<int> v){
-    for(int& elem: v)
-        std::cout << elem << " ";
-}
-
 //retorna aleatoriamente um elemento do vetor
 int sortear(const std::vector<int>& v){
     srand(time(NULL));
@@ -216,20 +211,28 @@ int sortear(const std::vector<int>& v){
 
 //ordena o vetor original
 void ordenar(std::vector<int>& v){
-    int escolhido {}, menor {}, pos {};
-    for(int i = 0; i < (int) v.size(); i++){
-        escolhido = v[i];
-        menor = v[i+1];
-        pos = i+1;
-        for(int j = i+1; j <= (int) v.size(); j++){
-            if(v[j] < menor)
-                menor = v[j];
-                pos = j;
-        }
-        if(menor < escolhido)
-            v[i] = v[pos];
-            v[pos] = escolhido;
-    }
+    std::sort(v.begin(), v.end());
+}
+
+// FUNÇÕES
+//{1, 3, 4, 3, -1, -2, -2} -> {1, 3, 4, -1, -2}
+std::vector<int> exclusivos(const std::vector<int>& v){
+    
+}
+
+//{1, 3, 4, 3, -1, -2, -2} -> {1, 3, 4, 2}
+std::vector<int> diferentes(const std::vector<int>& v){
+
+}
+
+//{1, 3, 4, 3, -1, -2, -2} -> {3, -2}
+std::vector<int> abandonados(const std::vector<int>& v){
+
+}
+
+void imprimir_vector(std::vector<int> v){
+    for(int& elem: v)
+        std::cout << elem << " ";
 }
 
 int main(){
@@ -274,8 +277,6 @@ int main(){
 
     // FILTER
 
-    std::vector<int> v {5, 10, 6, 8};
-
     // imprimir_vector(clonar(v));
     // imprimir_vector(pegar_homens(v));
     // imprimir_vector(pegar_calmos(v));
@@ -283,8 +284,9 @@ int main(){
 
     // std::cout << sortear(v) << "\n";
 
-    ordenar(v);
-    imprimir_vector(v);
+    std::vector<int> v {1, 3, 4, 3, -1, -2, -2};
+
+    imprimir_vector(exclusivos(v));
     
 
     
