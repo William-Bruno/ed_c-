@@ -197,6 +197,14 @@ void inverter_inplace(std::vector<int>& v){
     std::reverse(v.begin(), v.end());
 }
 
+//...................................
+//swap(j por i % size)
+//random_shuffle
+//embaralha o vetor original
+void embaralhar(std::vector<int>& v){
+    std::random_shuffle(v.begin(), v.end());
+}
+
 //retorna aleatoriamente um elemento do vetor
 int sortear(const std::vector<int>& v){
     srand(time(NULL));
@@ -217,18 +225,42 @@ void ordenar(std::vector<int>& v){
 // FUNÇÕES
 //{1, 3, 4, 3, -1, -2, -2} -> {1, 3, 4, -1, -2}
 std::vector<int> exclusivos(const std::vector<int>& v){
-    
+    std::vector<int> exclusivos;
+    for(int elem : v){
+        if(!existe(exclusivos, elem))
+            exclusivos.push_back(elem);
+    }
+    return exclusivos;
 }
 
 //{1, 3, 4, 3, -1, -2, -2} -> {1, 3, 4, 2}
 std::vector<int> diferentes(const std::vector<int>& v){
+    std::vector<int> diferentes;
+    for(int elem : v){
+        elem = std::abs(elem);
+        if(!existe(diferentes, elem))
+            diferentes.push_back(elem);
+    }
+    return diferentes;
 
 }
-
+//AQUI
 //{1, 3, 4, 3, -1, -2, -2} -> {3, -2}
 std::vector<int> abandonados(const std::vector<int>& v){
+    std::vector<int> exclusivos;
+    std::vector<int> abandonados;
 
+    for(int elem : v){
+        if(!existe(exclusivos, elem))
+            exclusivos.push_back(elem);
+        else
+            abandonados.push_back(elem);
+    }
+    return abandonados;
 }
+
+//std::pair
+//return make_pair
 
 void imprimir_vector(std::vector<int> v){
     for(int& elem: v)
@@ -265,18 +297,14 @@ int main(){
     CONTAGEM
     */
     // std::cout << calcular_stress_medio({-1,-2,5,7,9}) << "\n";
-   
     // std::cout <<  mais_homens_ou_mulheres({5, 3, -1, -50, -1, -99})<< "\n"; // "mulheres"
     // std::cout << mais_homens_ou_mulheres({5, 3, 1, -50, -1, -99})<< "\n"; // "empate"
     // std::cout << mais_homens_ou_mulheres({5, 3, 1, -50, -1, 99})<< "\n"; // "homens"
-
-    
     // std::cout << qual_metade_eh_mais_estressada({5, 3, -1, -50, -1, -99})<< "\n"; // "segunda"
     // std::cout << qual_metade_eh_mais_estressada({50, 98, 2, -50, -1, -99})<< "\n"; // "empate"
     // std::cout << qual_metade_eh_mais_estressada({51, 99, 1, -50, -1, -99})<< "\n"; // "primeira"
 
     // FILTER
-
     // imprimir_vector(clonar(v));
     // imprimir_vector(pegar_homens(v));
     // imprimir_vector(pegar_calmos(v));
@@ -286,7 +314,7 @@ int main(){
 
     std::vector<int> v {1, 3, 4, 3, -1, -2, -2};
 
-    imprimir_vector(exclusivos(v));
+    imprimir_vector(abandonados(v));
     
 
     
