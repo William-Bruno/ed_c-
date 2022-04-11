@@ -314,7 +314,20 @@ int main(){
 
     std::vector<int> v {1, 3, 4, 3, -1, -2, -2};
 
-    imprimir_vector(abandonados(v));
+    // imprimir_vector(inverter_com_copia(v));
+    // inverter_inplace(v);
+    // imprimir_vector(v);
+    // std::cout << sortear(v) << "\n"; // "primeira"
+    // embaralhar(v);
+    // imprimir_vector(v);   
+
+
+    //CONJUNTOS
+    // imprimir_vector(exclusivos(v));
+    // imprimir_vector(diferentes(v));
+    // imprimir_vector(abandonados(v));
+
+    
     
 
     
