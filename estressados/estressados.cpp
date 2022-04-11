@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <time.h>
 #include <stdlib.h>
+#include <map>
+#include <algorithm>
 
 
 bool existe(std::vector<int> fila, int x){
@@ -262,8 +264,88 @@ std::vector<int> abandonados(const std::vector<int>& v){
 //std::pair
 //return make_pair
 
+// MANIPULAÇÃO
+std::vector<int> sozinhos(const std::vector<int>& v){
+        
+        std::vector<int> abandonado(clonar(v));
+        std::vector<int> sozinho{};
+
+        ordenar(abandonado);
+        
+        for(int i = 0; i < (int) v.size(); i++){
+            abandonado[i] = std::abs(v[i]);
+          for(int j = i+1; j < i; j++){
+              if(abandonado[i] != v[j]){
+                  sozinho.push_back(+1);
+              }
+          }
+        }    
+        return sozinho;
+    }
+int mais_ocorrencias(std::vector<int>& v){
+    std::vector<int> unicos;
+    std::vector<int> contagem;
+    std::vector<int> maiores; 
+
+    for(int elem: v){
+        int pos = procurar(v, elem);
+        if(pos == -1){
+            unicos.push_back(elem);
+            contagem.push_back(1);
+        }else{
+            contagem[pos] += 1;
+        }
+    }
+    int maiorValor;
+
+    int maior_valor = *std::max_element(contagem.begin(), contagem.end());
+
+
+    return maior_valor;
+    
+
+
+}
+std::vector<int> mais_recorrentes(const std::vector<int>& v){
+
+}
+
+// PROXIMIDADE
+int briga(const std::vector<int>& v){}
+// briga({50, 98, 31, -51, 31, -99});  // 2
+
+std::vector<int> apaziguados(const std::vector<int>& v){}
+// apaziguados({83, -4, 65, 8, -99, 12 });  // {0, 4}
+
+// SEQUENCIAS
+int quantos_times(const std::vector<int>& v){}
+// quantos_times({5, 3, 1, -11, 1, 99, -11, -1, -2, 44});  // 3
+// quantos_times({1, 1, 1, -1, 1, -1, -1});  // 2
+// quantos_times({ 28,  26,  1,  6,  39});  // 1
+
+std::vector<int> maior_time(const std::vector<int>& v){}
+
+// maior_time({-5, 3, -1, 15, 1, -99, 11, 1 }); // {15, 1}
+// maior_time({-5, 3, -1, 15, -1, 99, -11, 1 }); // {}
+// maior_time({-5, 3, 1, -15, -1, 99, -11, -1, -7 }); // {-11, -1, -7}
+
+int sem_time(std::vector<int> vet){}
+// sem_time({-5, 3, 1, -15, -1, 99, -11, -1, -7 }); // 2
+// sem_time({-5, -3, -1, -15, -1, -99, -11, -1, -7 }); // 0
+// sem_time({-5, 3, 1, 15, -1, -99, -11, -1, -7 }); // 1
+
+// GRUPOS
+// casais: Casais são formados quando quando um homem e uma mulher com o mesmo nível de stress são formados. O 3 e o -3 formam um casal. Os participantes fossem orientados a sair da fila e procurar seu par. Quantos casais poderiam ser formados?
+// trios: Pedimos pros participantes se organizassem em trios. Todos os 3 deveriam estar com o mesmo nível de stress.Quantos trios podem ser formados?
+
+// ALTERAÇÃO
+// remove: Dado a pessoa X, como fica a fila após remover X?
+// insert: Como fica a fila se eu inserir a pessoa X na posição Y.
+// dance: O coordenador disse: se você está do lado de alguém da com o mesmo nível de stress que você, saia da fila com ele. Quando os pares saiam, as vezes se formavam novos pares que também saíam. Quem ficou na fila?
+
+
 void imprimir_vector(std::vector<int> v){
-    for(int& elem: v)
+    for(auto& elem: v)
         std::cout << elem << " ";
 }
 
@@ -312,7 +394,7 @@ int main(){
 
     // std::cout << sortear(v) << "\n";
 
-    std::vector<int> v {1, 3, 4, 3, -1, -2, -2};
+    // std::vector<int> v {1, 3, 4, 3, -1, -2, -2};
 
     // imprimir_vector(inverter_com_copia(v));
     // inverter_inplace(v);
@@ -328,6 +410,16 @@ int main(){
     // imprimir_vector(abandonados(v));
 
     
+    std::vector<int> v {1, 3, 4, 3, -1, -3, -3}; // -> {4}
+
+    // BLOCO III
+    // MAP
+    
+    std::cout << mais_ocorrencias(v) << "\n";
+    
+    
+
+
     
 
     
