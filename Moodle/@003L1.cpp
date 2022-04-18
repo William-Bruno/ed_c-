@@ -5,7 +5,6 @@ void show(std::vector<std::string> mapa){
     for(int i = 0; i < (int) mapa.size(); i++){
         std::cout << mapa[i] << "\n";
     }
-    getchar();
 }
 
 void tocar_fogo(std::vector<std::string>& mapa, int l, int c){
