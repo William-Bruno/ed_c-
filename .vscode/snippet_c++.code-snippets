@@ -1,0 +1,23 @@
+{
+	"c_plus": {
+		"prefix": "c_plus",
+		"body": [
+			"#include <iostream>",
+			"   ",
+			"   ",
+			"int main() {",
+			"   ",
+			"   ",
+			"}"
+		],
+		"description": "Código inicial para arquivo c++"
+	},
+
+	"c_cout": {
+		"prefix": "c_cout",
+		"body": [
+			"std::cout << ${1:/* message*/} << std::endl;"
+		],
+		"description": "Código saída de dados c++"
+	}
+}
