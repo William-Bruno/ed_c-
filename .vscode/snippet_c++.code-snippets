@@ -3,11 +3,9 @@
 		"prefix": "c_plus",
 		"body": [
 			"#include <iostream>",
-			"   ",
-			"   ",
+			"",
 			"int main() {",
-			"   ",
-			"   ",
+			"${1}",
 			"}"
 		],
 		"description": "Código inicial para arquivo c++"
