@@ -2,6 +2,6 @@
    
    
 int main() {
-   std::std::cout <<  "Somente um teste" << std::endl;
-   std::std::cout <<  "Somente um teste 1" << std::endl; 
+   std::cout <<  "Somente um teste" << std::endl;
+   std::cout <<  "Somente um teste 1" << std::endl; 
 }
