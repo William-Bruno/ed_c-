@@ -45,5 +45,6 @@
         "set": "cpp",
         "map": "cpp",
         "cinttypes": "cpp"
-    }
+    },
+    "editor.fontFamily": "Fira Code"
 }
