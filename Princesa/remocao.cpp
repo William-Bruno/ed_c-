@@ -8,6 +8,8 @@ void imprimir_vetor(std::vector<int> vet, int sword){
     std::cout << std::endl;    
 }
 
+
+
 int main(){
     int size{}, sword {};
     std::cin >> size >> sword;
