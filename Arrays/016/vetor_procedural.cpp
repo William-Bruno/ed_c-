@@ -12,25 +12,38 @@ Vector * vector_create(int capacity){
     //cria a struct
     //crie o vetor data
     //inicialize size e capacity
+    int * v = new int[capacity];
+    Vector * vet = new Vector();
+    vet->data = v;
+    vet->size = 0;
+    vet->capacity = capacity;
+    return vet;
 }
 
 void vector_destroy(Vector * vector){
-    //destrua data
-    //destrua a struct
+    delete [] vector->data;
+    delete vector;
 }
 
 void vector_add(Vector * vector, int value){
     //utilize capacity e size para verificar se ainda existe espaço
+    if(vector->size != vector->capacity){
+        vector->data[vector->size] = value;        
+        vector->size += 1;
+    }
+        
 }
 
 //retorne a string no formato 
 // [ a b c ]
 std::string vector_show(Vector * vector){
-    //retorne uma string com os dados do vetor
-    //você pode usar uma stringstream como buffer
-    //stringstream ss;
-    //ss << 5 << " eh inteiro";
-    //ss.str() será "5 eh inteiro"
+    std::stringstream ss;
+    ss << "[ ";
+    for(int i = 0; i < vector->size; i++){
+        ss << vector->data[i] << " ";
+    };
+    ss << "]";
+    return ss.str();    
 }
 
 
