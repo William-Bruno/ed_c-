@@ -1,7 +1,15 @@
 #include <iostream>
 #include <vector>
 
-bool existe(std::vector<int> fila, int x){
+using namespace std;
+
+void print(vector<int> vet){
+    for(auto elem:vet)
+        cout << elem << ' ';
+    cout << endl;
+}
+
+bool in(std::vector<int> fila, int x){
     for(int elem: fila){
         if(elem == x)
             return true;
@@ -9,7 +17,7 @@ bool existe(std::vector<int> fila, int x){
     return false;    
 }
 
-int contar(std::vector<int> fila, int x){
+int index_of(std::vector<int> fila, int x){
     int c = 0;
     for(int elem: fila){
         if(elem == x){
@@ -19,7 +27,7 @@ int contar(std::vector<int> fila, int x){
     return c;
 }
 
-int procurar(std::vector<int> fila, int x){
+int find_if(std::vector<int> fila, int x){
     for(int i = 0; i < (int) fila.size(); i++){
         if(fila[i] == x)
             return i;
@@ -27,7 +35,16 @@ int procurar(std::vector<int> fila, int x){
     return -1;
 }
 
-int procurar_apartir(std::vector<int> fila, int x, int inicio){
+int min_element(std::vector<int> fila){
+    int pos_menor {0};
+    for(int i = 0; i < (int) fila.size(); i++){
+        if(fila[i] < pos_menor)
+            pos_menor = i;
+    }
+    return pos_menor;
+}
+
+int find_min_if(std::vector<int> fila, int x, int inicio){
     for(int i = inicio; i < (int) fila.size(); i++){
         if(fila[i] == x)
             return i;
