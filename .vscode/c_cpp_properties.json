@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Ubuntu",
+            "name": "kali-linux",
             "includePath": [
                 "${workspaceFolder}/**"
             ],

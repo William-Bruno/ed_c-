@@ -4,6 +4,8 @@
 		"body": [
 			"#include <iostream>",
 			"",
+			"using namespace std;",
+			"",
 			"int main() {",
 			"${1}",
 			"}"
@@ -17,5 +19,39 @@
 			"std::cout << ${1:/* message*/} << std::endl;"
 		],
 		"description": "Código saída de dados c++"
+	},
+	"c_print":{
+		"prefix": "c_print",
+		"body": [
+			"void print(vector<int> vet){",
+			"    for(auto elem:vet)",
+			"        cout << elem << ' ';",
+			"    cout << endl;",
+			"}"
+		],
+		"description": "Função para imprimir vector"
+	},
+	"c_fractal":{
+		"prefix": "c_fractal",
+		"body": [
+			"#define XPAINT",
+			"#include \"xpaint.h\"",
+			"",
+			"int main(){",
+			"",
+    		"    x_open(800, 600, \"${1:/* nome da imagem*/}\");",
+    		"    //espessura",
+    		"    x_pen_set_thick(3);",
+			"    //angulo do inicio do desenho",
+    		"    x_pen_set_angle(90);",
+			"    //posicao do desenho",
+    		"    x_pen_set_pos(200, 400);",
+    		"    //recursao",
+    		"    draw_line();",
+    		"    x_save();",
+    		"    x_close();",
+			"}"
+		],
+		"description": "Escopo básico para desenhar fractais"
 	}
 }

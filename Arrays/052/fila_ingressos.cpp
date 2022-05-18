@@ -1,43 +1,44 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_set>
 
-int pos(std::vector<int> vet, int value){
-    for(int i = 0; i <(int) vet.size(); i++)
-        if(vet[i] == value)
-            return i;
-    return -1;
-}
+using namespace std;
 
-std::vector<int> fila(std::vector<int>& vet, std::vector<int>& aux){
-    for(int i = 0; i<(int) aux.size();i++)
-        vet.erase(begin(vet) + pos(vet, aux[i]));   
-    return vet;
-}
+vector<int> fila(vector<int> inicial, vector<int> sairam){
+    vector<int> fila_final;
+    unordered_set<int> mapa_fila(sairam.begin(), sairam.end());
 
-void print(std::vector<int> vet){
-    std::cout << "[ ";
-    for(auto elem: vet){
-        std::cout << elem << " ";
+    for(auto elem: inicial){   
+        if(mapa_fila.find(elem) == mapa_fila.end()){
+            fila_final.push_back(elem);
+        }
     }
-    std::cout << "] " << std::endl;
+    return fila_final;
+}
+
+void print(vector<int> vet){
+    cout << "[ ";
+    for(auto elem: vet){
+        cout << elem << " ";
+    }
+    cout << "] " << endl;
 }
 
 int main() {
     int N{};
-    std::cin >> N;
-    std::vector<int> vet(N);
+    cin >> N;
+    vector<int> vet(N);
     for(int i = 0; i < N; i++){
-        std::cin >> vet[i];
+        cin >> vet[i];
     }
     int v{};
-    std::cin >> v;
-    std::vector<int> M(v);
+    cin >> v;
+    vector<int> M(v);
     if(v > 0){
         for(int j = 0; j < v; j++){
-            std::cin >> M[j];
+            cin >> M[j];
         }
     }
-    fila(vet, M);
-    print(vet);
+    print(fila(vet, M));
 }

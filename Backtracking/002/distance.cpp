@@ -39,7 +39,7 @@ bool preencher(std::string& line, int index, int limite, int proximidade){
 }
    
 int main() {
-    std::ifstream arquivo("backtracking.txt");
+    std::ifstream arquivo("distance.txt");
     std::string line;
     int proximidade = 0;
     arquivo >> line >> proximidade;
